@@ -1,0 +1,1042 @@
+/*
+  Whiskerton: Idle Cat Café — site style.
+  Mirrors the game's cozy UI: warm cream paper, cocoa ink, caramel buttons,
+  candy-pink and mint accents, rounded heavy type and soft rounded cards.
+  Dark mode follows the game's night sky: deep plum with cream text.
+  No web fonts or external resources: everything is system fonts and CSS.
+*/
+
+:root {
+  color-scheme: light dark;
+
+  --cream: #fff6e9;
+  --cocoa: #5a3e36;
+  --caramel: #e9a86b;
+  --pink: #ff8fa3;
+  --mint: #6cc5a8;
+  --plum: #22183a;
+
+  --bg: var(--cream);
+  --text: var(--cocoa);
+  --muted: #7a5f56;
+  --heading: #4a302a;
+  --card: #ffffff;
+  --card-soft: #fffaf2;
+  --line: rgba(90, 62, 54, 0.1);
+  --shadow: 0 1px 0 rgba(90, 62, 54, 0.05), 0 12px 32px -12px rgba(140, 74, 42, 0.22);
+  --link: #b33c57;
+  --link-hover: #8f2c44;
+  --accent-ink: #9e5a2b;
+  --mint-ink: #237a5f;
+  --pill: #ffd9e0;
+  --pill-ink: #5a3e36;
+  --btn: var(--caramel);
+  --btn-ink: #3a2620;
+  --btn-shadow: 0 4px 0 #c98445, 0 10px 24px -8px rgba(201, 132, 69, 0.6);
+  --dot: rgba(233, 168, 107, 0.13);
+  --tint-caramel: rgba(233, 168, 107, 0.2);
+  --tint-pink: rgba(255, 143, 163, 0.2);
+  --tint-mint: rgba(108, 197, 168, 0.22);
+  --header: rgba(255, 246, 233, 0.86);
+
+  --font: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius: 24px;
+  --wrap: 1040px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--plum);
+    --text: #f6eadb;
+    --muted: #cdbfd9;
+    --heading: var(--cream);
+    --card: #30234f;
+    --card-soft: #2a1f46;
+    --line: rgba(255, 246, 233, 0.09);
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+    --link: var(--pink);
+    --link-hover: #ffb3c1;
+    --accent-ink: var(--caramel);
+    --mint-ink: var(--mint);
+    --pill: var(--pink);
+    --pill-ink: var(--plum);
+    --btn-ink: var(--plum);
+    --btn-shadow: 0 4px 0 #a8703e, 0 10px 24px -8px rgba(0, 0, 0, 0.6);
+    --dot: rgba(255, 246, 233, 0.045);
+    --tint-caramel: rgba(233, 168, 107, 0.18);
+    --tint-pink: rgba(255, 143, 163, 0.18);
+    --tint-mint: rgba(108, 197, 168, 0.18);
+    --header: rgba(34, 24, 58, 0.86);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  /* Polka dots, like the icon's background. */
+  background-image:
+    radial-gradient(circle at 20px 20px, var(--dot) 0 7px, transparent 7.5px),
+    radial-gradient(circle at 80px 70px, var(--dot) 0 7px, transparent 7.5px);
+  background-size: 120px 100px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--link);
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+strong {
+  font-weight: 800;
+  color: var(--heading);
+}
+
+.wrap {
+  width: min(var(--wrap), 100% - 32px);
+  margin-inline: auto;
+}
+
+/* ---------- Header & footer ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--header);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--heading);
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #fff, 0 4px 12px -4px rgba(140, 74, 42, 0.45);
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  min-width: 0;
+}
+
+.brand-name b {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.brand-name small {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
+
+.nav a {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--heading);
+  background: var(--tint-caramel);
+}
+
+.nav a[aria-current="page"] {
+  color: var(--pill-ink);
+  background: var(--pill);
+}
+
+.site-footer {
+  margin-top: 88px;
+  padding: 30px 0 44px;
+  border-top: 1px solid var(--line);
+  background: var(--card-soft);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--link);
+}
+
+/* ---------- Type ---------- */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--heading);
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+h1 {
+  font-size: clamp(40px, 7.5vw, 68px);
+}
+
+h1 .soft,
+h2 .soft {
+  display: block;
+  color: var(--accent-ink);
+}
+
+h2 {
+  font-size: clamp(30px, 4.6vw, 42px);
+}
+
+h3 {
+  font-size: 21px;
+  letter-spacing: -0.005em;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+.lead {
+  font-size: clamp(18px, 2.2vw, 20px);
+  color: var(--text);
+  max-width: 640px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Candy-pink pill over a title. */
+.kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--pill);
+  color: var(--pill-ink);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Three little paw-print dots under headings. */
+.dots {
+  display: flex;
+  gap: 8px;
+  margin: 18px 0 24px;
+}
+
+.dots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--caramel);
+}
+
+.dots i:nth-child(2) {
+  background: var(--pink);
+}
+
+.dots i:nth-child(3) {
+  background: var(--mint);
+}
+
+.center {
+  text-align: center;
+}
+
+.center .dots,
+.center .lead,
+.final .dots {
+  justify-content: center;
+  margin-inline: auto;
+}
+
+/* Small section labels. */
+.label {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+  position: relative;
+  padding: 26px 26px 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
+
+.card.soft {
+  background: var(--card-soft);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: var(--btn);
+  color: var(--btn-ink);
+  box-shadow: var(--btn-shadow);
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  color: var(--btn-ink);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #c98445;
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.btn.secondary {
+  background: var(--card);
+  color: var(--heading);
+  box-shadow: inset 0 0 0 2px var(--line), 0 4px 0 var(--line);
+}
+
+.btn.secondary:hover {
+  color: var(--link);
+}
+
+/* "Coming soon" badge: looks like a button but is not a link. */
+.soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--tint-mint);
+  border: 2px dashed color-mix(in srgb, var(--mint) 70%, transparent);
+  color: var(--mint-ink);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.soon svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.center .actions {
+  justify-content: center;
+}
+
+.meta {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ---------- Page heads (support, privacy) ---------- */
+
+.page-head {
+  padding: 56px 0 28px;
+}
+
+.page-head .lead {
+  margin-bottom: 0;
+}
+
+.updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--tint-mint);
+  color: var(--mint-ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.updated::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+section {
+  scroll-margin-top: 84px;
+}
+
+.block {
+  margin-top: 56px;
+}
+
+/* ---------- Marketing ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 64px 0 8px;
+}
+
+.hero-icon {
+  position: relative;
+  width: 220px;
+}
+
+.hero-icon img {
+  width: 220px;
+  height: 220px;
+  border-radius: 22.37%;
+  box-shadow: 0 0 0 6px #fff, 0 26px 50px -18px rgba(140, 74, 42, 0.55);
+  animation: bob 4.5s ease-in-out infinite;
+}
+
+/* A soft pink halo behind the icon. */
+.hero-icon::before {
+  content: "";
+  position: absolute;
+  inset: -36px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tint-pink), transparent);
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+.hero h1 {
+  margin-top: 2px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 20px;
+}
+
+.feature h3 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.bubble {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--tint-caramel);
+  color: var(--accent-ink);
+}
+
+.bubble.pink {
+  background: var(--tint-pink);
+  color: var(--link);
+}
+
+.bubble.mint {
+  background: var(--tint-mint);
+  color: var(--mint-ink);
+}
+
+.bubble svg {
+  width: 26px;
+  height: 26px;
+}
+
+.feature ul,
+.ticks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature li,
+.ticks li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.feature li::before,
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.55em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--caramel);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.chip {
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--tint-caramel);
+  color: var(--heading);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.chip.pink {
+  background: var(--tint-pink);
+}
+
+.chip.mint {
+  background: var(--tint-mint);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.fact {
+  padding: 18px 14px 16px;
+  text-align: center;
+}
+
+.fact b {
+  display: block;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--accent-ink);
+}
+
+.fact span {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.final {
+  padding: 48px 26px 44px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, var(--tint-pink), transparent 70%),
+    var(--card);
+}
+
+.final img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  border-radius: 22.37%;
+  box-shadow: 0 0 0 4px #fff, 0 14px 30px -12px rgba(140, 74, 42, 0.5);
+}
+
+/* ---------- Support ---------- */
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px 32px;
+  align-items: center;
+}
+
+.contact p {
+  margin: 0;
+}
+
+.contact .email {
+  word-break: break-all;
+}
+
+.faq {
+  display: grid;
+  gap: 12px;
+}
+
+.faq details {
+  padding: 0;
+  border-radius: 20px;
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 20px 17px 22px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--heading);
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A round caramel "+" that turns into "−". */
+.faq summary::after {
+  content: "";
+  margin-left: auto;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--btn-ink), var(--btn-ink)) center / 12px 3px no-repeat,
+    linear-gradient(var(--btn-ink), var(--btn-ink)) center / 3px 12px no-repeat,
+    var(--caramel);
+  transition: transform 0.2s ease;
+}
+
+.faq details[open] summary::after {
+  background:
+    linear-gradient(var(--btn-ink), var(--btn-ink)) center / 12px 3px no-repeat,
+    var(--caramel);
+  transform: rotate(180deg);
+}
+
+.faq summary:hover {
+  color: var(--link);
+}
+
+.faq .answer {
+  padding: 0 22px 18px;
+  font-size: 16px;
+}
+
+.faq .answer p:last-child,
+.faq .answer ul:last-child {
+  margin-bottom: 0;
+}
+
+.faq .answer ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+}
+
+.faq .answer li {
+  margin-bottom: 6px;
+}
+
+.faq .answer li::marker {
+  color: var(--caramel);
+}
+
+/* In-game button and menu names. */
+.key {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--tint-caramel);
+  color: var(--heading);
+  font-size: 0.94em;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ---------- Privacy ---------- */
+
+.glance {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 14px;
+}
+
+.glance .card {
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+}
+
+.glance b {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--heading);
+}
+
+.glance b::before {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat,
+    var(--mint);
+}
+
+.glance span {
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.doc {
+  padding: 40px clamp(20px, 5vw, 56px) 36px;
+}
+
+.doc h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 44px 0 14px;
+  font-size: clamp(23px, 3.4vw, 28px);
+}
+
+.doc h2:first-child {
+  margin-top: 0;
+}
+
+.doc h2 .num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  background: var(--tint-caramel);
+  color: var(--accent-ink);
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.doc ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+
+.doc li {
+  margin-bottom: 8px;
+}
+
+.doc li::marker {
+  color: var(--caramel);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 20px;
+  font-size: 15px;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.data-table th {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  border-bottom: 2px solid var(--tint-caramel);
+}
+
+.data-table td:first-child {
+  font-weight: 800;
+  color: var(--heading);
+  white-space: nowrap;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.callout {
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: var(--tint-pink);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 760px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  .hero .dots,
+  .hero .lead {
+    justify-content: center;
+    margin-inline: auto;
+  }
+
+  .hero .actions {
+    justify-content: center;
+  }
+
+  .hero-icon,
+  .hero-icon img {
+    width: 168px;
+    height: 168px;
+  }
+
+  .card {
+    padding: 22px 20px 18px;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .page-head {
+    padding-top: 40px;
+  }
+
+  .faq summary {
+    padding: 15px 16px 15px 18px;
+  }
+
+  .faq .answer {
+    padding: 0 18px 16px;
+  }
+
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table tr {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .data-table td {
+    display: block;
+    padding: 2px 0;
+    border: 0;
+    white-space: normal;
+  }
+
+  .data-table td:first-child {
+    white-space: normal;
+  }
+
+  .data-table td:last-child {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--mint-ink);
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-name small {
+    display: none;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-name b {
+    font-size: 19px;
+  }
+
+  .nav a {
+    padding: 6px 9px;
+    font-size: 15px;
+  }
+}
+
+/* On narrow phones the header keeps only the icon; the name stays for screen readers. */
+@media (max-width: 440px) {
+  .brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 370px) {
+  .nav a {
+    padding: 6px 8px;
+  }
+
+  .btn,
+  .soon {
+    font-size: 16px;
+    padding-inline: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-icon img {
+    animation: none;
+  }
+
+  .btn,
+  .faq summary::after {
+    transition: none;
+  }
+}

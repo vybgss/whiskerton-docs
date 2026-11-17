@@ -1,0 +1,14 @@
+{
+  "name": "Whiskerton: Idle Cat Café",
+  "short_name": "Whiskerton",
+  "description": "A cozy idle game for iPhone and iPad: run a cat café in a small town while your cats cook, brew coffee, serve guests, garden, fish, tidy up and guide tourists on their own.",
+  "start_url": "marketing.html",
+  "scope": "./",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#FFF6E9",
+  "background_color": "#FFF6E9",
+  "display": "browser"
+}
