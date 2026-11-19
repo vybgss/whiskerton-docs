@@ -547,6 +547,11 @@ section {
   gap: 20px;
 }
 
+/* An odd card out at the end spans the row instead of leaving a hole beside it. */
+.features > .feature:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .feature h3 {
   display: flex;
   align-items: center;
