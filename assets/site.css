@@ -661,21 +661,6 @@ section {
 
 /* ---------- Support ---------- */
 
-.contact {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 20px 32px;
-  align-items: center;
-}
-
-.contact p {
-  margin: 0;
-}
-
-.contact .email {
-  word-break: break-all;
-}
-
 .faq {
   display: grid;
   gap: 12px;
@@ -920,10 +905,6 @@ section {
 
   .card {
     padding: 22px 20px 18px;
-  }
-
-  .contact {
-    grid-template-columns: 1fr;
   }
 
   .page-head {
