@@ -85,7 +85,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg);
-  /* Polka dots, like the icon's background. */
+  /* Soft polka dots on the cream paper. */
   background-image:
     radial-gradient(circle at 20px 20px, var(--dot) 0 7px, transparent 7.5px),
     radial-gradient(circle at 80px 70px, var(--dot) 0 7px, transparent 7.5px);
